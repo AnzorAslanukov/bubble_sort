@@ -7,27 +7,25 @@ import time
 root = tk.Tk()
 root.geometry('704x480')
 
-# Frame setup for labels
-# upper_frame contains label with generated array
-# lower frame contains label showing incremental changes to sorted array
-upper_frame = tk.Frame(root).pack()
-lower_frame = tk.Frame(root).pack()
+# Contains label which shows generated array
+upper_frame = tk.Frame(root,
+                       height=100,
+                       width=704)
+upper_frame.pack()
+# Contains label which shows sorting of generated array
+middle_frame = tk.Frame(root,
+                        height=180,
+                        width=704).pack()
+middle_frame.pack()
+# Contains GUI controls
+lower_frame = tk.Frame(root,
+                       height=200,
+                       width=704)
+lower_frame.pack()
 
 # Label showing generated array
-gen_arr_lbl = tk.Label(upper_frame, text='Something', bg='red')
-gen_arr_lbl.config(width=75)
-gen_arr_lbl.pack()
-
-# Set text for sorted_arr_lbl
-sorted_arr_lbl = tk.Label(lower_frame, text='')
-sorted_arr_lbl.pack()
-
-test_list = test.list_of_lists
-expanding_var = ''
-for list in test_list:
-    expanding_var += str(list) + '\n'
-    sorted_arr_lbl['text'] = expanding_var
-    time.sleep(.5)
+generated_array_label = tk.Label(upper_frame, text="Something")
+generated_array_label.pack()
 
 # Wrap-up of GUI
 root.title('Bubble Sort')
