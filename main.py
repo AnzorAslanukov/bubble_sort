@@ -41,16 +41,19 @@ Frames
 
 # Initial tkinter setup for GUI
 root = tk.Tk()
+root.configure(bg='#66a1d2')
 
 # Contains label which shows generated array
-upper_frame = tk.Frame(root)
+upper_frame = tk.Frame(root,
+                       bg='#66a1d2')
 upper_frame.pack(padx=10)
 # Contains label which shows sorting of generated array
-middle_frame = tk.Frame(root)
-middle_frame.pack(padx=10,
-                  fill=tk.X)
+middle_frame = tk.Frame(root,
+                        bg='#66a1d2')
+middle_frame.pack(padx=10)
 # Contains GUI controls
-lower_frame = tk.Frame(root)
+lower_frame = tk.Frame(root,
+                       bg='#66a1d2')
 lower_frame.pack()
 
 '''
@@ -64,7 +67,9 @@ generated_array_title_label = tk.Label(upper_frame,
                                        padx=2,
                                        pady=2,
                                        font='Arial',
-                                       width=60)
+                                       width=60,
+                                       bg='#455f65',
+                                       fg='#dcd5d5')
 generated_array_title_label.pack(fill=tk.X,
                                  pady=5)
 
@@ -75,15 +80,20 @@ generated_array_label = tk.Label(upper_frame,
                                  padx=2,
                                  pady=2,
                                  relief='sunken',
-                                 font='Arial')
+                                 font='Arial',
+                                 bg='#b252a1')
 generated_array_label.pack(fill=tk.X,
                            pady=5)
 
 # Title label for sorted array
 sorted_arr_title = tk.Label(middle_frame,
                             text='Sorted Array',
-                            font='Arial')
-sorted_arr_title.pack(fill=tk.X)
+                            font='Arial',
+                            width=60,
+                            bg='#455f65',
+                            fg='#dcd5d5')
+sorted_arr_title.pack(fill=tk.X,
+                      pady=5)
 
 # Label for sorted array
 sorted_arr_lbl = tk.Label(middle_frame,
@@ -101,10 +111,13 @@ int_length_title.pack(pady=5,
 
 # Error message label
 error_label = tk.Label(lower_frame,
-                       text='ERROR')
+                       text='ERROR',
+                       font=('Arial', 12, 'bold'),
+                       fg='red')
 error_label_desc = tk.Label(lower_frame,
                             text='Characters must be\n'
-                            'integers between 1 and 21')
+                            'integers between 1 and 21',
+                            fg='orange')
 
 '''
 Text Input 
