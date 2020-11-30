@@ -12,6 +12,7 @@ def random_arr_gen():
     if len_input.isnumeric() and 2 <= int(len_input) <= 20:
         error_label.pack_forget()
         error_label_desc.pack_forget()
+        error_frame.pack_forget()
         arr_len = int(arr_length_entry.get())
         random_arr = []
 
@@ -29,6 +30,7 @@ def random_arr_gen():
         sorted_arr_lbl['text'] = random_arr
 
     else:
+        error_frame.pack()
         error_label.pack()
         error_label_desc.pack(pady=5)
         generated_array_label['text'] = ''
@@ -41,20 +43,23 @@ Frames
 
 # Initial tkinter setup for GUI
 root = tk.Tk()
-root.configure(bg='#66a1d2')
+root.configure(bg='#2c2f33')
 
 # Contains label which shows generated array
 upper_frame = tk.Frame(root,
-                       bg='#66a1d2')
+                       bg='#2c2f33')
 upper_frame.pack(padx=10)
 # Contains label which shows sorting of generated array
 middle_frame = tk.Frame(root,
-                        bg='#66a1d2')
+                        bg='#2c2f33')
 middle_frame.pack(padx=10)
 # Contains GUI controls
 lower_frame = tk.Frame(root,
-                       bg='#66a1d2')
+                       bg='#2c2f33')
 lower_frame.pack()
+# Contains error message
+error_frame = tk.Frame(root,
+                       bg='#2c2f33')
 
 '''
 Labels
@@ -66,9 +71,9 @@ generated_array_title_label = tk.Label(upper_frame,
                                        text='Generated Array',
                                        padx=2,
                                        pady=2,
-                                       font='Arial',
-                                       width=60,
-                                       bg='#455f65',
+                                       font=('Arial', 16),
+                                       width=70,
+                                       bg='#23272a',
                                        fg='#dcd5d5')
 generated_array_title_label.pack(fill=tk.X,
                                  pady=5)
@@ -80,17 +85,18 @@ generated_array_label = tk.Label(upper_frame,
                                  padx=2,
                                  pady=2,
                                  relief='sunken',
-                                 font='Arial',
-                                 bg='#b252a1')
+                                 font=('Source Code Pro', 16),
+                                 bg='#99aab5',
+                                 fg='#23272a')
 generated_array_label.pack(fill=tk.X,
                            pady=5)
 
 # Title label for sorted array
 sorted_arr_title = tk.Label(middle_frame,
                             text='Sorted Array',
-                            font='Arial',
-                            width=60,
-                            bg='#455f65',
+                            font=('Arial', 16),
+                            width=70,
+                            bg='#23272a',
                             fg='#dcd5d5')
 sorted_arr_title.pack(fill=tk.X,
                       pady=5)
@@ -99,32 +105,44 @@ sorted_arr_title.pack(fill=tk.X,
 sorted_arr_lbl = tk.Label(middle_frame,
                           text='',
                           relief='sunken',
-                          font='Arial')
+                          font=('Source Code Pro', 16),
+                          bg='#99aab5',
+                          fg='#23272a')
 sorted_arr_lbl.pack(fill=tk.X)
 
 # Int input title label for list length
 int_length_title = tk.Label(lower_frame,
                             text='Choose Array Length \n'
-                                 '(Value between 2 & 50)')
+                                 '(Value between 2 & 50)',
+                            bg='#2c2f33',
+                            fg='#dcd5d5',
+                            font=('Arial', 10))
 int_length_title.pack(pady=5,
                       fill=tk.X)
 
 # Error message label
-error_label = tk.Label(lower_frame,
+error_label = tk.Label(error_frame,
                        text='ERROR',
                        font=('Arial', 12, 'bold'),
-                       fg='red')
-error_label_desc = tk.Label(lower_frame,
+                       fg='red',
+                       bg='#2c2f33')
+error_label_desc = tk.Label(error_frame,
                             text='Characters must be\n'
                             'integers between 1 and 21',
-                            fg='orange')
+                            fg='orange',
+                            bg='#2c2f33',
+                            font=('Arial', 10))
 
 '''
 Text Input 
 '''
 
-arr_length_entry = tk.Entry(lower_frame)
-arr_length_entry.pack()
+arr_length_entry = tk.Entry(lower_frame,
+                            bg='#7289da',
+                            fg='#23272a',
+                            font=('Arial', 12, 'bold'))
+arr_length_entry.pack(side='right',
+                      padx=5)
 
 '''
 Button
@@ -132,9 +150,14 @@ Button
 
 start_button = tk.Button(lower_frame,
                          text='Start',
-                         command=random_arr_gen)
-start_button.pack(pady=5)
+                         command=random_arr_gen,
+                         font=('Arial', 10),
+                         bg='#99aab5')
+start_button.pack(pady=5,
+                  side='left')
 
 # Wrap-up of GUI
 root.title('Bubble Sort')
+# I wanted to add an icon to this program but it is not worth it
+# root.iconbitmap('bubble_icon.ico')
 root.mainloop()
